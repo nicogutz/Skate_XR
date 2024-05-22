@@ -231,7 +231,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             }
 
             objectSpawned?.Invoke(newObject);
-            Destroy(this);
+            enabled = false;
             return true;
         }
     }

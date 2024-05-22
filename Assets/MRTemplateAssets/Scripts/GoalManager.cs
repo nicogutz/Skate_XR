@@ -291,7 +291,7 @@ public class GoalManager : MonoBehaviour
         // TurnOnVideoPlayer();
 
         // if (m_VideoPlayerToggle != null)
-            // m_VideoPlayerToggle.isOn = true;
+        // m_VideoPlayerToggle.isOn = true;
 
 
         if (m_FadeMaterial != null)
@@ -366,6 +366,8 @@ public class GoalManager : MonoBehaviour
 
     void OnObjectSpawned(GameObject spawnedObject)
     {
+        m_ObjectSpawner.enabled = false;
+
         // m_SurfacesTapped++;
         // if (m_CurrentGoal.CurrentGoal == OnboardingGoals.TapSurface && m_SurfacesTapped >= k_NumberOfSurfacesTappedToCompleteGoal)
         // {
