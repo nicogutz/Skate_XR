@@ -45,8 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d226c518cb4c0cacf828b2e93b7a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ObjectSelectorDropdown: {fileID: 0}
-  m_DestroyObjectsButton: {fileID: 0}
 --- !u!114 &4968769839778511794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,19 +447,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d2ad3359f96894eb8454c9f9f292fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StepList: []
-  m_StepButtonTextField: {fileID: 0}
-  m_SkipButton: {fileID: 0}
-  m_LearnButton: {fileID: 0}
-  m_LearnModal: {fileID: 0}
-  m_LearnModalButton: {fileID: 0}
   m_CoachingUIParent: {fileID: 0}
   m_FadeMaterial: {fileID: 0}
-  m_PassthroughToggle: {fileID: 0}
   m_GoalPanelLazyFollow: {fileID: 0}
   m_TapTooltip: {fileID: 0}
-  m_VideoPlayer: {fileID: 0}
-  m_VideoPlayerToggle: {fileID: 0}
   m_ARPlaneManager: {fileID: 2074947109}
   m_ObjectSpawner: {fileID: 0}
 --- !u!1 &4770136204441838708
@@ -1992,6 +1981,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6936238204546681212, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.0035
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202421930936276471, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.0035
+      objectReference: {fileID: 0}
     - target: {fileID: 7608579954974633796, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2351,12 +2348,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!4 &7025650970808197002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7990873191126656719, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}

@@ -62,6 +62,7 @@ public class GoalManager : MonoBehaviour
 
     public void StartGame()
     {
+        m_GoalPanelLazyFollow.positionFollowMode = LazyFollow.PositionFollowMode.None;
         m_CoachingUIParent.SetActive(false);
 
         m_TapTooltip.SetActive(true);
@@ -69,7 +70,6 @@ public class GoalManager : MonoBehaviour
         m_FadeMaterial.FadeSkybox(true);
 
         m_ObjectSpawner.objectSpawned += OnObjectSpawned;
-        m_GoalPanelLazyFollow.positionFollowMode = LazyFollow.PositionFollowMode.None;
         StartCoroutine(TurnOnPlanes());
     }
 
@@ -81,6 +81,7 @@ public class GoalManager : MonoBehaviour
 
     void OnObjectSpawned(GameObject spawnedObject)
     {
+        m_TapTooltip.SetActive(false);
     }
 
 }
