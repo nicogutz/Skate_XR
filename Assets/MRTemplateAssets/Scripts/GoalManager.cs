@@ -104,10 +104,10 @@ public class GoalManager : MonoBehaviour
         var tapSurfaceGoal = new Goal(OnboardingGoals.TapSurface);
         var endGoal = new Goal(OnboardingGoals.Empty);
 
-        m_OnboardingGoals.Enqueue(welcomeGoal);
-        m_OnboardingGoals.Enqueue(findSurfaceGoal);
+        // m_OnboardingGoals.Enqueue(welcomeGoal);
+        // m_OnboardingGoals.Enqueue(findSurfaceGoal);
         m_OnboardingGoals.Enqueue(tapSurfaceGoal);
-        m_OnboardingGoals.Enqueue(endGoal);
+        // m_OnboardingGoals.Enqueue(endGoal);
 
         m_CurrentGoal = m_OnboardingGoals.Dequeue();
         if (m_TapTooltip != null)
@@ -233,7 +233,7 @@ public class GoalManager : MonoBehaviour
         else
         {
             m_AllGoalsFinished = true;
-            ForceEndAllGoals();
+            // ForceEndAllGoals();
         }
 
         if (m_CurrentGoal.CurrentGoal == OnboardingGoals.FindSurfaces)
@@ -288,10 +288,10 @@ public class GoalManager : MonoBehaviour
     {
         m_CoachingUIParent.transform.localScale = Vector3.zero;
 
-        TurnOnVideoPlayer();
+        // TurnOnVideoPlayer();
 
-        if (m_VideoPlayerToggle != null)
-            m_VideoPlayerToggle.isOn = true;
+        // if (m_VideoPlayerToggle != null)
+            // m_VideoPlayerToggle.isOn = true;
 
 
         if (m_FadeMaterial != null)
@@ -366,67 +366,67 @@ public class GoalManager : MonoBehaviour
 
     void OnObjectSpawned(GameObject spawnedObject)
     {
-        m_SurfacesTapped++;
-        if (m_CurrentGoal.CurrentGoal == OnboardingGoals.TapSurface && m_SurfacesTapped >= k_NumberOfSurfacesTappedToCompleteGoal)
-        {
-            CompleteGoal();
-            m_GoalPanelLazyFollow.positionFollowMode = LazyFollow.PositionFollowMode.Follow;
-        }
+        // m_SurfacesTapped++;
+        // if (m_CurrentGoal.CurrentGoal == OnboardingGoals.TapSurface && m_SurfacesTapped >= k_NumberOfSurfacesTappedToCompleteGoal)
+        // {
+        //     // CompleteGoal();
+        //     m_GoalPanelLazyFollow.positionFollowMode = LazyFollow.PositionFollowMode.Follow;
+        // }
     }
 
-    public void TooglePlayer(bool visibility)
-    {
-        if (visibility)
-        {
-            TurnOnVideoPlayer();
-        }
-        else
-        {
-            m_VideoPlayer.SetActive(false);
-        }
-    }
+    // public void TooglePlayer(bool visibility)
+    // {
+    //     if (visibility)
+    //     {
+    //         TurnOnVideoPlayer();
+    //     }
+    //     else
+    //     {
+    //         m_VideoPlayer.SetActive(false);
+    //     }
+    // }
 
-    void TurnOnVideoPlayer()
-    {
-        if (m_VideoPlayer.activeSelf)
-            return;
+    // void TurnOnVideoPlayer()
+    // {
+    //     if (m_VideoPlayer.activeSelf)
+    //         return;
 
-        var follow = m_VideoPlayer.GetComponent<LazyFollow>();
-        if (follow != null)
-            follow.rotationFollowMode = LazyFollow.RotationFollowMode.None;
+    //     var follow = m_VideoPlayer.GetComponent<LazyFollow>();
+    //     if (follow != null)
+    //         follow.rotationFollowMode = LazyFollow.RotationFollowMode.None;
 
-        m_VideoPlayer.SetActive(false);
-        var target = Camera.main.transform;
-        var targetRotation = target.rotation;
-        var newTransform = target;
-        var targetEuler = targetRotation.eulerAngles;
-        targetRotation = Quaternion.Euler
-        (
-            0f,
-            targetEuler.y,
-            targetEuler.z
-        );
+    //     m_VideoPlayer.SetActive(false);
+    //     var target = Camera.main.transform;
+    //     var targetRotation = target.rotation;
+    //     var newTransform = target;
+    //     var targetEuler = targetRotation.eulerAngles;
+    //     targetRotation = Quaternion.Euler
+    //     (
+    //         0f,
+    //         targetEuler.y,
+    //         targetEuler.z
+    //     );
 
-        newTransform.rotation = targetRotation;
-        var targetPosition = target.position + newTransform.TransformVector(m_TargetOffset);
-        m_VideoPlayer.transform.position = targetPosition;
+    //     newTransform.rotation = targetRotation;
+    //     var targetPosition = target.position + newTransform.TransformVector(m_TargetOffset);
+    //     m_VideoPlayer.transform.position = targetPosition;
 
 
-        var forward = target.position - m_VideoPlayer.transform.position;
-        var targetPlayerRotation = forward.sqrMagnitude > float.Epsilon ? Quaternion.LookRotation(forward, Vector3.up) : Quaternion.identity;
-        targetPlayerRotation *= Quaternion.Euler(new Vector3(0f, 180f, 0f));
-        var targetPlayerEuler = targetPlayerRotation.eulerAngles;
-        var currentEuler = m_VideoPlayer.transform.rotation.eulerAngles;
-        targetPlayerRotation = Quaternion.Euler
-        (
-            currentEuler.x,
-            targetPlayerEuler.y,
-            currentEuler.z
-        );
+    //     var forward = target.position - m_VideoPlayer.transform.position;
+    //     var targetPlayerRotation = forward.sqrMagnitude > float.Epsilon ? Quaternion.LookRotation(forward, Vector3.up) : Quaternion.identity;
+    //     targetPlayerRotation *= Quaternion.Euler(new Vector3(0f, 180f, 0f));
+    //     var targetPlayerEuler = targetPlayerRotation.eulerAngles;
+    //     var currentEuler = m_VideoPlayer.transform.rotation.eulerAngles;
+    //     targetPlayerRotation = Quaternion.Euler
+    //     (
+    //         currentEuler.x,
+    //         targetPlayerEuler.y,
+    //         currentEuler.z
+    //     );
 
-        m_VideoPlayer.transform.rotation = targetPlayerRotation;
-        m_VideoPlayer.SetActive(true);
-        if (follow != null)
-            follow.rotationFollowMode = LazyFollow.RotationFollowMode.LookAtWithWorldUp;
-    }
+    //     m_VideoPlayer.transform.rotation = targetPlayerRotation;
+    //     m_VideoPlayer.SetActive(true);
+    //     if (follow != null)
+    //         follow.rotationFollowMode = LazyFollow.RotationFollowMode.LookAtWithWorldUp;
+    // }
 }
