@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2543568143444549533}
+  - component: {fileID: -8943249697667753103}
   m_Layer: 0
   m_Name: RotatedPark
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   - {fileID: 7144326625538765026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8943249697667753103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2921969024516093772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc0f33d65a9cc72c8afdef9c16c1c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshParent: {fileID: 0}
 --- !u!1 &5269966894214582263
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +71,7 @@ Transform:
   m_GameObject: {fileID: 5269966894214582263}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.004813, y: -0.02382, z: -0.00002}
+  m_LocalPosition: {x: 0.004853, y: -0.02382, z: -0.00002}
   m_LocalScale: {x: 0.00025, y: 0.00025, z: 0.00025}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3875,6 +3889,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 2543568143444549533}
     m_Modifications:
     - target: {fileID: 5701994560624406876, guid: 14ed330b925099170b20b83320db3afe, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 68.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701994560624406876, guid: 14ed330b925099170b20b83320db3afe, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 77.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701994560624406876, guid: 14ed330b925099170b20b83320db3afe, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 73.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701994560624406876, guid: 14ed330b925099170b20b83320db3afe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3917,7 +3943,7 @@ PrefabInstance:
     - target: {fileID: 5791029685778756951, guid: 14ed330b925099170b20b83320db3afe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d7641aae0a19ed5d7af5916c328bab4b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2d4d2ed696e5ade49ae50d4e19151de5, type: 2}
     - target: {fileID: 7195018279681256686, guid: 14ed330b925099170b20b83320db3afe, type: 3}
       propertyPath: m_Name
       value: SkatePark

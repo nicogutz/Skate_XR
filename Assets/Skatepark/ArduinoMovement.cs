@@ -8,15 +8,17 @@ using System.Threading;
 using TMPro;
 using UnityEngine;
 
-public class ArduinoMovement : MonoBehaviour
+public class TextIMU : MonoBehaviour
 {
 	#region private members
 	CancellationTokenSource cts = new();
 	private TcpClient socketConnection;
 	private Thread clientReceiveThread;
 	private TextMeshProUGUI textMesh;
-	private ConcurrentQueue<string> rotationQueue = new ConcurrentQueue<string>(); // Thread-safe queue for storing rotations
+	private ConcurrentQueue<Quaternion> rotationQueue = new ConcurrentQueue<Quaternion>(); // Thread-safe queue for storing rotations
+	private GameObject textMeshParent;
 	#endregion
+
 
 	// Use this for initialization 	
 	private void OnDestroy()
@@ -27,8 +29,10 @@ public class ArduinoMovement : MonoBehaviour
 
 	void Start()
 	{
+		if (textMeshParent == null)
+			textMeshParent = GameObject.Find("DataText");
 		if (textMesh == null)
-			textMesh = GetComponent<TextMeshProUGUI>();
+			textMesh = textMeshParent.GetComponent<TextMeshProUGUI>();
 		ConnectToTcpServer();
 	}
 
@@ -52,9 +56,10 @@ public class ArduinoMovement : MonoBehaviour
 	void Update()
 	{
 		// Check if there is a new rotation in the queue
-		if (rotationQueue.TryDequeue(out string message))
+		if (rotationQueue.TryDequeue(out Quaternion rotation))
 		{
-			textMesh.SetText(message);
+			textMesh.SetText(rotation.eulerAngles.ToString());
+			transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5.0f);
 		}
 	}
 
@@ -76,7 +81,18 @@ public class ArduinoMovement : MonoBehaviour
 						var incommingData = new byte[length];
 						Array.Copy(bytes, 0, incommingData, 0, length);
 						string serverMessage = Encoding.ASCII.GetString(incommingData);
-						rotationQueue.Enqueue(serverMessage);
+						try
+						{
+							string[] split = serverMessage.Split(',');
+							Quaternion rotation = Quaternion.Euler(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+							rotationQueue.Enqueue(rotation);
+						}
+						catch
+						{
+
+							// Debug.Log("Error");
+						}
+
 
 						if (token.IsCancellationRequested)
 						{
